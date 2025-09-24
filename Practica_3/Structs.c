@@ -17,7 +17,7 @@ void Movie_Data(Movie*this,int n)
     {
         printf("Name[%d]:",i+1);
         scanf("%s",(this+i)->name);
-
+    
     do{
         printf("Year[%d]:",i+1);
         scanf("%d",&(this+i)->year);
@@ -28,7 +28,7 @@ void Movie_Data(Movie*this,int n)
         {
             break;
         } 
-    } while (1);
+    }while (1);
       
     do{
         printf("Numero de productores de la pelicula %s: ",(this+i)->name);
@@ -43,15 +43,12 @@ void Movie_Data(Movie*this,int n)
         }
     }while (1);
     
-
         for (int j = 0; j < (this+i)->num_producers; j++)
         {
             printf("Producer [%d] name : ",j+1);
             scanf("%s",(this+i)->producers[j]);
         }
-        
     }
-   
 }
 
 void Movie_Print(Movie*this,int n)
@@ -65,7 +62,6 @@ void Movie_Print(Movie*this,int n)
         {
             printf("Movie[%d].Producers:%s\n",i+1,(this+i)->producers[j]);
         }
-        
     }
 }
 
@@ -78,27 +74,23 @@ void Movie_Search(Movie*this,int n,char *data)
             printf("Pelicula encontrada\n");
             Movie_Print(this+i,n);
         }
-        else
-        {
-            printf("Pelicula no encontrad\n");
-        }
     }
 }
 
 int main()
 {
-    Movie pelicula;
+    Movie pelicula[10];
     printf("***Buscador de peliculas***\n");
-    Movie_Data(&pelicula,2);
+    Movie_Data(&pelicula,10);
     
     system("clear");
 
     printf("Lista de peliculas\n");
-    Movie_Print(&pelicula,2);
+    Movie_Print(&pelicula,10);
     
     char d[100];
     printf("Busca una pelicula\n");
     printf("Ingresa el nombre de la pelicula:");
     scanf("%s",d);
-    Movie_Search(&pelicula,2,d);
+    Movie_Search(&pelicula,10,d);
 }
