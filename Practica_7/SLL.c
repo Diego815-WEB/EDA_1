@@ -1,50 +1,91 @@
-#include "SLL.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-static Node*newnode(Item_t data)
-{
-    Node*n=malloc(sizeof(Node));
-    if (n !=NULL)
-    {
-        n->data=data;
-        n->next=NULL;
+struct Nodo {
+    int dato;
+    struct Nodo *siguiente;
+};
+
+void insertarInicio(struct Nodo **cabeza, int valor) {
+    struct Nodo *nuevo = malloc(sizeof(struct Nodo));
+    if (!nuevo) {
+        printf("Error al reservar memoria\n");
+        return;
     }
-    return n;
-}
+    nuevo->dato = valor;
+    nuevo->siguiente = *cabeza;
+    *cabeza = nuevo;
 
-SLL *New()
-{
-    SLL*l=malloc(sizeof(SLL));
-    if (l !=NULL)
-    {
-        l->cursor=l->first=l->last=NULL;
-        l->len=0;
-    }else
-    {
-        return NULL;
+    printf("Insertado: %d\n", valor);
+}
+void recorrer(struct Nodo *cabeza) {
+    printf("Lista: ");
+    while (cabeza != NULL) {
+        printf("%d -> ", cabeza->dato);
+        cabeza = cabeza->siguiente;
     }
-    return l;
+    printf("NULL\n");
 }
-
-void SLL_Delete(SLL **pThis)
-{
-    assert(*pThis);
-}
-
-void SLL_Push_front(SLL*this,Item_t x)
-{
-    assert(this);
-    Node*n=newnode(x);
-    assert(n);
-    if (this->len==0)
-    {
-        this->last=n;
+void eliminar(struct Nodo **cabeza, int valor) {
+    if (*cabeza == NULL) {
+        printf("Lista vacía\n");
+        return;
     }
-    n->next=this->first;
-    this->first=n;
-    this->len++;
+
+    struct Nodo *actual = *cabeza;
+    struct Nodo *anterior = NULL;
+
+    if (actual->dato == valor) {
+        *cabeza = actual->siguiente;
+        free(actual);
+        printf("Eliminado: %d\n", valor);
+        return;
+    }
+
+    while (actual != NULL && actual->dato != valor) {
+        anterior = actual;
+        actual = actual->siguiente;
+    }
+
+    if (actual == NULL) {
+        printf("Valor no encontrado\n");
+        return;
+    }
+
+    anterior->siguiente = actual->siguiente;
+    free(actual);
+    printf("Eliminado: %d\n", valor);
+}
+void liberar(struct Nodo *cabeza) {
+    struct Nodo *temp;
+    while (cabeza != NULL) {
+        temp = cabeza;
+        cabeza = cabeza->siguiente;
+        free(temp);
+    }
+    printf("Memoria liberada correctamente\n");
 }
 
+int main() {
+    struct Nodo *cabeza = NULL;
+    int n, valor;
+    printf("¿Cuántos valores desea insertar? ");
+    scanf("%d", &n);
 
+    for (int i = 0; i < n; i++) {
+        printf("Valor %d: ", i + 1);
+        scanf("%d", &valor);
+        insertarInicio(&cabeza, valor);
+        recorrer(cabeza);
+    }
+    printf("\nRecorrido final:\n");
+    recorrer(cabeza);
 
+    printf("Valor a eliminar: ");
+    scanf("%d", &valor);
+    eliminar(&cabeza, valor);
+    recorrer(cabeza);
+    liberar(cabeza);
+
+    return 0;
+}
