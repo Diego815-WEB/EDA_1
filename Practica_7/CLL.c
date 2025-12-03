@@ -137,3 +137,13 @@ int main() {
 
     return 0;
 }
+
+/*
+Preguntas
+1. ¿Qué ventaja tiene la lista circular frente a la simple?
+podemos mover nodos con mayor facilidad porque estan conectados atras y adelante 
+2. ¿Qué error puede causar un bucle infinito en una lista circular?
+perdida de memoria y que el programa se rompa porque  comienza a gastar recursos
+3. ¿Qué estructuras o programas del mundo real se basan en listas circulares?
+paginas web al momento de entrar a la pagina o salir
+*/
