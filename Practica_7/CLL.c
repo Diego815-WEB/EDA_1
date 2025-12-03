@@ -69,7 +69,6 @@ void eliminarCircular(struct Nodo **cabeza, struct Nodo **ultimo, int valor) {
         return;
     }
 
-    /* Caso 1: único nodo */
     if (*cabeza == *ultimo && actual == *cabeza) 
     {
         *cabeza = NULL;
