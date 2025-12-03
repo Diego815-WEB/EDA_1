@@ -89,3 +89,10 @@ int main() {
 
     return 0;
 }
+/*
+1. ¿Por qué las listas enlazadas no requieren tamaño fijo como los arreglos?
+porque utilizan nodos  para enlazarse y cada nodo es propio, se pueden quitar o agregar y en un arreglo se define su tamaño al inicio.
+2. ¿Qué diferencia hay entre mover la cabeza y modificar los punteros internos?
+no borra ni inserta nada cuando se mueve la cabeza sin encambio cuando modifica los punteros internos es todo lo contrario
+
+*/
