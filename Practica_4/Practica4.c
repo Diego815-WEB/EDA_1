@@ -82,7 +82,7 @@ int main()
     free(arr2);
     printf("Memoria liberada correctamente\n");
     
-    #if 0
+    /*
     1-¿Qué diferencia observaron entre los valores iniciales con malloc y calloc?
 
         En mi caso  cunado imprimi los valores  para calloc y malloc me daba cero aunque 
@@ -100,6 +100,6 @@ int main()
         ocurre una fuga de memoria , lo que pasa cuando se utiliza memoria dinamica se utiliza de la memoria de la ram entonces
         cuando el codigo corre esa parte reservada de la memoria se mantiene en el proceso asignado y no se puede
         utilizar.
-    #endif
+    */
 
 }

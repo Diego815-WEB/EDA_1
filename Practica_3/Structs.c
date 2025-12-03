@@ -13,7 +13,7 @@ typedef struct
 
 void Movie_Data(Movie*this,int n)
 {
-    for (int i = 0; i < n; i++)
+    for(int i = 0; i < n; i++)
     {
         printf("Name[%d]:",i+1);
         scanf("%s",(this+i)->name);
@@ -81,16 +81,16 @@ int main()
 {
     Movie pelicula[10];
     printf("***Buscador de peliculas***\n");
-    Movie_Data(&pelicula,10);
+    Movie_Data(pelicula,3);
     
     system("clear");
 
     printf("Lista de peliculas\n");
-    Movie_Print(&pelicula,10);
+    Movie_Print(pelicula,3);
     
     char d[100];
     printf("Busca una pelicula\n");
     printf("Ingresa el nombre de la pelicula:");
     scanf("%s",d);
-    Movie_Search(&pelicula,10,d);
+    Movie_Search(pelicula,3,d);
 }
