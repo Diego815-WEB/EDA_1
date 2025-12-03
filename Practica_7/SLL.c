@@ -1,14 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Nodo {
+struct Nodo 
+{
     int dato;
     struct Nodo *siguiente;
 };
 
-void insertarInicio(struct Nodo **cabeza, int valor) {
+void insertarInicio(struct Nodo **cabeza, int valor) 
+{
     struct Nodo *nuevo = malloc(sizeof(struct Nodo));
-    if (!nuevo) {
+    if (!nuevo) 
+    {
         printf("Error al reservar memoria\n");
         return;
     }
@@ -18,16 +21,20 @@ void insertarInicio(struct Nodo **cabeza, int valor) {
 
     printf("Insertado: %d\n", valor);
 }
-void recorrer(struct Nodo *cabeza) {
+void recorrer(struct Nodo *cabeza) 
+{
     printf("Lista: ");
-    while (cabeza != NULL) {
+    while (cabeza != NULL) 
+    {
         printf("%d -> ", cabeza->dato);
         cabeza = cabeza->siguiente;
     }
     printf("NULL\n");
 }
-void eliminar(struct Nodo **cabeza, int valor) {
-    if (*cabeza == NULL) {
+void eliminar(struct Nodo **cabeza, int valor) 
+{
+    if (*cabeza == NULL) 
+    {
         printf("Lista vacía\n");
         return;
     }
@@ -35,19 +42,22 @@ void eliminar(struct Nodo **cabeza, int valor) {
     struct Nodo *actual = *cabeza;
     struct Nodo *anterior = NULL;
 
-    if (actual->dato == valor) {
+    if (actual->dato == valor) 
+    {
         *cabeza = actual->siguiente;
         free(actual);
         printf("Eliminado: %d\n", valor);
         return;
     }
 
-    while (actual != NULL && actual->dato != valor) {
+    while (actual != NULL && actual->dato != valor) 
+    {
         anterior = actual;
         actual = actual->siguiente;
     }
 
-    if (actual == NULL) {
+    if (actual == NULL) 
+    {
         printf("Valor no encontrado\n");
         return;
     }
@@ -56,9 +66,11 @@ void eliminar(struct Nodo **cabeza, int valor) {
     free(actual);
     printf("Eliminado: %d\n", valor);
 }
-void liberar(struct Nodo *cabeza) {
+void liberar(struct Nodo *cabeza) 
+{
     struct Nodo *temp;
-    while (cabeza != NULL) {
+    while (cabeza != NULL)
+    {
         temp = cabeza;
         cabeza = cabeza->siguiente;
         free(temp);
@@ -66,13 +78,15 @@ void liberar(struct Nodo *cabeza) {
     printf("Memoria liberada correctamente\n");
 }
 
-int main() {
+int main() 
+{
     struct Nodo *cabeza = NULL;
     int n, valor;
     printf("¿Cuántos valores desea insertar? ");
     scanf("%d", &n);
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) 
+    {
         printf("Valor %d: ", i + 1);
         scanf("%d", &valor);
         insertarInicio(&cabeza, valor);
